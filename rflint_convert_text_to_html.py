@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import os
 
-soup = BeautifulSoup('''\<html><head><title>RFLint Result</title></head></html>''')
+soup = BeautifulSoup('''<html><head><title>RFLint Result</title></head></html>''',"html.parser")
 
 # Create html tag
 html = soup.new_tag('html')
@@ -50,13 +50,18 @@ script = soup.new_tag('script')
 script.attrs["src"] = "https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
 soup.head.append(script)
 
-body = soup.new_tag('body',style="display: block;border: 1px solid transparent;font-family:sans-serif;float:left")
+link = soup.new_tag('link')
+link.attrs["rel"] = "stylesheet"
+link.attrs["href"] = "https://www.w3schools.com/w3css/4/w3.css"
+soup.head.append(link)
+
+body = soup.new_tag('body',style="display: block;border: 1px solid transparent;font-family: Consolas,\"courier new\";float:left")
 soup.insert(0, body)
 
 # Create header tag and title
-h2 = soup.new_tag('h1',style="display: block;font-size: 2em;padding: 10px;")
-h2.string = "Robot Framework Lint Result"
-soup.insert(0, h2)
+h1 = soup.new_tag('h1',style="display: block;font-size: 2em;padding: 10px;")
+h1.string = "Robot Framework Lint Result"
+soup.insert(0, h1)
 
 # Get rflint result - OS independent
 current_path = os.getcwd()
@@ -80,16 +85,24 @@ warning = [
     'TrailingBlankLines',
     ]
 
-# Open rflint result text file
-with open(text_file) as infile:
+# Validate rflint result is not empty
+if os.stat(text_file).st_size==0:
+    # Create header tag and title
+	div = soup.new_tag('div',style="padding: 20px;background-color: #ddffdd;border-left: 16px solid #4CAF50; width: 70%;")
+	div['class'] = "w3-panel w3-note"
+        div.string = "RF Lint Analysis Completed. All Set Go..."
+	body.insert(0, div)
 
-    # Iterate for every line
+# Open rflint result text file
+with open(text_file,'r') as infile:
+
+    # Iterate for line
     for line in infile:
 
         # Split new line 
         CONTENT = line.split("/n")
 
-        # Iterate for every line
+        # Iterate for every new line
         for coltext in CONTENT: # important that you reverse order
             
             # If line is file name then add responsive-button
@@ -121,14 +134,20 @@ with open(text_file) as infile:
                 header.insert(1, file_name)
 
                 # create ol tag, all the warnings, errors will be added under this
-                ol = soup.new_tag('ol',style="background: #ff9999; padding: 5px;border: 1px solid")
+                ol = soup.new_tag('ol',style="background: #ff9999; padding: 5px;border: 1px solid;")
                 child_div.insert(0, ol)
             
             else:
 
-                # create li tag, all the warnings, errors will be added
-                li = soup.new_tag('li',style="background: #ffe5e5;padding: 5px;margin-left: 35px;;border: 1px solid;border-color: #ccc")
-                ol.insert(1, li)
+                try:
+
+                    # create li tag, all the warnings, errors will be added
+                    li = soup.new_tag('li',style="background: #ffe5e5;padding: 5px;margin-left: 35px;;border: 1px solid;border-color: #ccc;")
+                    ol.insert(1, li)
+
+                except NameError:
+                    print "Tag not found. Skipping result."
+                    continue
 
                 # IF message type is warning as 'WARNING' badge else, 'ERROR' badge
                 if any(label in coltext for label in warning):  
