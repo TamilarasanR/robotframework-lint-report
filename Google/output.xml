@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generated="20180714 23:08:28.669" generator="Robot 3.0.2 (Python 2.7.14 on win32)">
+<robot generated="20180715 11:06:53.409" generator="Robot 3.0.2 (Python 2.7.14 on win32)">
 <suite source="D:\ROBO_SCRIPTS\RFLintReport\RFLintReport\google\google_search.robot" id="s1" name="Google Search">
 <test id="s1-t1" name="Test Case 1">
 <kw name="Log" library="BuiltIn">
@@ -7,8 +7,8 @@
 <arguments>
 <arg>"Test case to verify google search."</arg>
 </arguments>
-<msg timestamp="20180714 23:08:28.855" level="INFO">"Test case to verify google search."</msg>
-<status status="PASS" endtime="20180714 23:08:28.855" starttime="20180714 23:08:28.854"></status>
+<msg timestamp="20180715 11:07:01.493" level="INFO">"Test case to verify google search."</msg>
+<status status="PASS" endtime="20180715 11:07:01.493" starttime="20180715 11:07:01.493"></status>
 </kw>
 <kw name="Open Browser" library="SeleniumLibrary">
 <doc>Opens a new browser instance to the given ``url``.</doc>
@@ -16,16 +16,15 @@
 <arg>https://www.google.com/</arg>
 <arg>chrome</arg>
 </arguments>
-<msg timestamp="20180714 23:08:28.856" level="INFO">Opening browser 'chrome' to base url 'https://www.google.com/'.</msg>
-<status status="PASS" endtime="20180714 23:08:37.089" starttime="20180714 23:08:28.855"></status>
+<msg timestamp="20180715 11:07:01.495" level="INFO">Opening browser 'chrome' to base url 'https://www.google.com/'.</msg>
+<status status="PASS" endtime="20180715 11:07:11.189" starttime="20180715 11:07:01.494"></status>
 </kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
 <arguments>
-<arg>10s</arg>
+<arg>name:q</arg>
 </arguments>
-<msg timestamp="20180714 23:08:47.100" level="INFO">Slept 10 seconds</msg>
-<status status="PASS" endtime="20180714 23:08:47.100" starttime="20180714 23:08:37.090"></status>
+<status status="PASS" endtime="20180715 11:07:11.306" starttime="20180715 11:07:11.190"></status>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
 <doc>Types the given ``text`` into text field identified by ``locator``.</doc>
@@ -33,12 +32,12 @@
 <arg>name:q</arg>
 <arg>RFLint Report Generation</arg>
 </arguments>
-<msg timestamp="20180714 23:08:47.100" level="INFO">Typing text 'RFLint Report Generation' into text field 'name:q'.</msg>
-<status status="PASS" endtime="20180714 23:08:47.523" starttime="20180714 23:08:47.100"></status>
+<msg timestamp="20180715 11:07:11.309" level="INFO">Typing text 'RFLint Report Generation' into text field 'name:q'.</msg>
+<status status="PASS" endtime="20180715 11:07:11.846" starttime="20180715 11:07:11.307"></status>
 </kw>
-<status status="PASS" endtime="20180714 23:08:47.523" critical="yes" starttime="20180714 23:08:28.853"></status>
+<status status="PASS" endtime="20180715 11:07:11.847" critical="yes" starttime="20180715 11:07:01.491"></status>
 </test>
-<status status="PASS" endtime="20180714 23:08:47.526" starttime="20180714 23:08:28.669"></status>
+<status status="PASS" endtime="20180715 11:07:11.853" starttime="20180715 11:06:53.426"></status>
 </suite>
 <statistics>
 <total>
