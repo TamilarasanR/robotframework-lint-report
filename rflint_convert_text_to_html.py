@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import os
 
-soup = BeautifulSoup('''\<html><head><title>RF-Lint Result Dashboard</title></head></html>''')
+soup = BeautifulSoup('''\<html><head><title>RFLint Result</title></head></html>''')
 
 # Create html tag
 html = soup.new_tag('html')
@@ -55,7 +55,7 @@ soup.insert(0, body)
 
 # Create header tag and title
 h2 = soup.new_tag('h1',style="display: block;font-size: 2em;padding: 10px;")
-h2.string = "RF-Lint Result"
+h2.string = "Robot Framework Lint Result"
 soup.insert(0, h2)
 
 # Get rflint result - OS independent
@@ -107,9 +107,18 @@ with open(text_file) as infile:
                 parent_div.insert(0, child_div)
                 
                 # create h4 tag with responsive
-                file_name = soup.new_tag('h4')
-                file_name.string = coltext.strip().replace('+', '')
-                child_div.insert(0, file_name)
+                header = soup.new_tag('h4')
+                child_div.insert(0, header)
+
+                label = soup.new_tag('span',style="width: 5em;border: 1px solid black;font-weight: bold;")
+                label["class"] = "badge badge-info"
+                label.string = "FILE: "
+                header.insert(0, label)
+
+                file_name = soup.new_tag('span',style="font-weight: bold;")
+                text = coltext.strip().replace('+ .', '')
+                file_name.string = text
+                header.insert(1, file_name)
 
                 # create ol tag, all the warnings, errors will be added under this
                 ol = soup.new_tag('ol',style="background: #ff9999; padding: 5px;border: 1px solid")
