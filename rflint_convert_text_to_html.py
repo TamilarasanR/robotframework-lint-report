@@ -1,67 +1,36 @@
 from bs4 import BeautifulSoup
 import os
 
-soup = BeautifulSoup('''<html><head><title>RFLint Result</title></head></html>''',"html.parser")
+page_html="""
+<!DOCTYPE html>
+<html>
+ <head>
+ <link rel="shortcut icon" href="https://png.icons8.com/windows/50/000000/bot.png" type="image/x-icon" />
+  <title>RFLint Result</title>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet"/>
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+ </head>
+</html>
+"""
 
-# Create html tag
-html = soup.new_tag('html')
-soup.insert(0, html)
+soup = BeautifulSoup(page_html,"html.parser")
 
-# Create meta tag
-metatag = soup.new_tag('meta')
-metatag.attrs["name"] = "viewport"
-metatag.attrs["content"] = "width=device-width, initial-scale=1"
-soup.head.append(metatag)
-
-# Create link tag
-link = soup.new_tag('link')
-link.attrs["rel"] = "stylesheet"
-link.attrs["href"] = "https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"
-soup.head.append(link)
-
-# Create script tag - responsive button
-script = soup.new_tag('script')
-script.attrs["src"] = "https://code.jquery.com/jquery-1.11.3.min.js"
-soup.head.append(script)
-
-# Create script tag - responsive button
-script = soup.new_tag('script')
-script.attrs["src"] = "https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"
-soup.head.append(script)
-
-# Create link tag - badges
-link = soup.new_tag('link')
-link.attrs["rel"] = "stylesheet"
-link.attrs["href"] = "https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-soup.head.append(link)
-
-# Create script tag - badges
-script = soup.new_tag('script')
-script.attrs["src"] = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-soup.head.append(script)
-
-# Create script tag - badges
-script = soup.new_tag('script')
-script.attrs["src"] = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-soup.head.append(script)
-
-# Create script tag - badges
-script = soup.new_tag('script')
-script.attrs["src"] = "https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-soup.head.append(script)
-
-link = soup.new_tag('link')
-link.attrs["rel"] = "stylesheet"
-link.attrs["href"] = "https://www.w3schools.com/w3css/4/w3.css"
-soup.head.append(link)
-
-body = soup.new_tag('body',style="display: block;border: 1px solid transparent;font-family: Consolas,\"courier new\";float:left")
-soup.insert(0, body)
+body = soup.new_tag('body',style="font-family: Consolas,\"courier new\";float:left")
+soup.insert(50, body)
 
 # Create header tag and title
-h1 = soup.new_tag('h1',style="display: block;font-size: 2em;padding: 10px;")
+h1 = soup.new_tag('h1',style="display: block;font-size: 1em;padding: 10px;")
 h1.string = "Robot Framework Lint Result"
-soup.insert(0, h1)
+body.insert(0, h1)
 
 # Get rflint result - OS independent
 current_path = os.getcwd()
@@ -90,8 +59,62 @@ if os.stat(text_file).st_size==0:
     # Create header tag and title
 	div = soup.new_tag('div',style="padding: 20px;background-color: #ddffdd;border-left: 16px solid #4CAF50; width: 70%;")
 	div['class'] = "w3-panel w3-note"
-        div.string = "RF Lint Analysis Completed. All Set Go..."
-	body.insert(0, div)
+        div.string = "RF Lint Analysis Completed. You've All Caught Up"
+	body.insert(52, div)
+else:    
+    files_count = 0
+    error_count = 0
+    warning_count = 0
+
+    # Open rflint result text file
+    with open(text_file,'r') as infile:
+        # Iterate for line
+        for line in infile:
+            # Split new line 
+            CONTENT = line.split("/n")
+            # Iterate for every new line
+            for coltext in CONTENT: # important that you reverse order            
+                if ".robot" in coltext:
+                    #global files_count
+                    files_count+=1
+                elif "W" in coltext:
+                    #global error_count
+                    error_count+=1
+                elif "E" in coltext:
+                    #global warning_count
+                    warning_count +=1
+
+    dashboard_content="""
+    <div class="tabcontent" id="dashboard" style="padding: 20px;">
+        <h6><b><i class="fa fa-dashboard"></i> Statistics</b></h6>
+        <div class="w3-row-padding w3-margin-bottom" style="padding: 20px;">
+        <div class="w3-quarter col-sm-4">
+            <div class="w3-container w3-teal w3-padding-8 ">
+                <div class="w3-clear">
+                    <h3  class="text-center" style="font-size:20px">Files: <b>%s</b></h3>
+                </div>
+            </div>
+        </div>
+        <div class="w3-quarter col-sm-4">
+            <div class="w3-container w3-red w3-padding-8 ">
+                <div class="w3-clear">
+                    <h3 class="text-center" style="font-size:20px">Errors: <b>%s</b></h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-quarter col-sm-4">
+            <div class="w3-container w3-brown w3-padding-8">
+                <div class="w3-clear">
+                    <h3 class="text-center" style="font-size:20px">Warnings: <b>%s</b></h3>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="tabcontent" id="analysis" >
+        <h6><b><i class="fa fa-th-list"></i> Analysis</b></h6>
+    """ % (files_count,error_count,warning_count)
+    body.append(BeautifulSoup(dashboard_content, 'html.parser'))
 
 # Open rflint result text file
 with open(text_file,'r') as infile:
@@ -112,7 +135,7 @@ with open(text_file,'r') as infile:
                 parent_div = soup.new_tag('div')
                 parent_div["class"] = "ui-content"
                 parent_div["data-role"] = "main"
-                body.insert(0, parent_div)
+                body.insert(55, parent_div)
 
                 # create div tag with responsive
                 child_div = soup.new_tag('div')

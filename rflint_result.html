@@ -1,7 +1,119 @@
-<h1 style="display: block;font-size: 2em;padding: 10px;">
- Robot Framework Lint Result
-</h1>
-<body style='display: block;border: 1px solid transparent;font-family: Consolas,"courier new";float:left'>
+<!DOCTYPE html>
+<html>
+ <head>
+  <link href="https://png.icons8.com/windows/50/000000/bot.png" rel="shortcut icon" type="image/x-icon"/>
+  <title>
+   RFLint Result
+  </title>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+   <script src="https://code.jquery.com/jquery-1.11.3.min.js">
+   </script>
+   <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js">
+   </script>
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js">
+    </script>
+   </link>
+  </link>
+ </head>
+</html>
+<body style='font-family: Consolas,"courier new";float:left'>
+ <h1 style="display: block;font-size: 1em;padding: 10px;">
+  Robot Framework Lint Result
+ </h1>
+<div class="tabcontent" id="dashboard" style="padding: 20px;">
+ <h6>
+  <b>
+   <i class="fa fa-dashboard">
+   </i>
+   Statistics
+  </b>
+ </h6>
+ <div class="w3-row-padding w3-margin-bottom" style="padding: 20px;">
+  <div class="w3-quarter col-sm-4">
+   <div class="w3-container w3-teal w3-padding-8 ">
+    <div class="w3-clear">
+     <h3 class="text-center" style="font-size:20px">
+      Files:
+      <b>
+       2
+      </b>
+     </h3>
+    </div>
+   </div>
+  </div>
+  <div class="w3-quarter col-sm-4">
+   <div class="w3-container w3-red w3-padding-8 ">
+    <div class="w3-clear">
+     <h3 class="text-center" style="font-size:20px">
+      Errors:
+      <b>
+       13
+      </b>
+     </h3>
+    </div>
+   </div>
+  </div>
+  <div class="w3-quarter col-sm-4">
+   <div class="w3-container w3-brown w3-padding-8">
+    <div class="w3-clear">
+     <h3 class="text-center" style="font-size:20px">
+      Warnings:
+      <b>
+       6
+      </b>
+     </h3>
+    </div>
+   </div>
+  </div>
+ </div>
+ <div class="tabcontent" id="analysis">
+  <h6>
+   <b>
+    <i class="fa fa-th-list">
+    </i>
+    Analysis
+   </b>
+  </h6>
+ </div>
+</div> <div class="ui-content" data-role="main">
+  <div data-role="collapsible">
+   <ol style="background: #ff9999; padding: 5px;border: 1px solid;">
+    <li style="background: #ffe5e5;padding: 5px;margin-left: 35px;;border: 1px solid;border-color: #ccc;">
+     <span class="badge badge-warning" style="width: 7em;border: 1px solid black;font-weight: bold;">
+      WARNING
+     </span>
+     <span>
+      Line No:2, 0: No suite documentation (RequireSuiteDocumentation)
+     </span>
+    </li>
+    <li style="background: #ffe5e5;padding: 5px;margin-left: 35px;;border: 1px solid;border-color: #ccc;">
+     <span class="badge badge-danger" style="width: 7em;border: 1px solid black;font-weight: bold;">
+      ERROR
+     </span>
+     <span>
+      Line No:6, 0: No testcase documentation (RequireTestDocumentation)
+     </span>
+    </li>
+   </ol>
+   <h4>
+    <span class="badge badge-info" style="width: 5em;border: 1px solid black;font-weight: bold;">
+     FILE:
+    </span>
+    <span style="font-weight: bold;">
+     \Google\google_search.robot
+    </span>
+   </h4>
+  </div>
+ </div>
  <div class="ui-content" data-role="main">
   <div data-role="collapsible">
    <ol style="background: #ff9999; padding: 5px;border: 1px solid;">
@@ -152,57 +264,4 @@
    </h4>
   </div>
  </div>
- <div class="ui-content" data-role="main">
-  <div data-role="collapsible">
-   <ol style="background: #ff9999; padding: 5px;border: 1px solid;">
-    <li style="background: #ffe5e5;padding: 5px;margin-left: 35px;;border: 1px solid;border-color: #ccc;">
-     <span class="badge badge-warning" style="width: 7em;border: 1px solid black;font-weight: bold;">
-      WARNING
-     </span>
-     <span>
-      Line No:2, 0: No suite documentation (RequireSuiteDocumentation)
-     </span>
-    </li>
-    <li style="background: #ffe5e5;padding: 5px;margin-left: 35px;;border: 1px solid;border-color: #ccc;">
-     <span class="badge badge-danger" style="width: 7em;border: 1px solid black;font-weight: bold;">
-      ERROR
-     </span>
-     <span>
-      Line No:6, 0: No testcase documentation (RequireTestDocumentation)
-     </span>
-    </li>
-   </ol>
-   <h4>
-    <span class="badge badge-info" style="width: 5em;border: 1px solid black;font-weight: bold;">
-     FILE:
-    </span>
-    <span style="font-weight: bold;">
-     \Google\google_search.robot
-    </span>
-   </h4>
-  </div>
- </div>
 </body>
-<html>
-</html>
-<html>
- <head>
-  <title>
-   RFLint Result
-  </title>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet"/>
-  <script src="https://code.jquery.com/jquery-1.11.3.min.js">
-  </script>
-  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js">
-  </script>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet"/>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js">
-  </script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js">
-  </script>
-  <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet"/>
- </head>
-</html>
