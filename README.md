@@ -45,7 +45,7 @@ __WITH ERRORS__
 
 *Credits:*
 
-1. RFLint - Bryan [link](http://robotframework.org)
+1. RFLint [link](https://github.com/boakley/robotframework-lint)
 2. W3Schools [link](http://www.w3schools.com)
 3. BeautifulSoup [link](http://beautiful-soup-4.readthedocs.io)
 4. Bootstrap [link](https://getbootstrap.com/)
