@@ -89,26 +89,13 @@ else:
         <h6><b><i class="fa fa-dashboard"></i> Statistics</b></h6>
         <div class="w3-row-padding w3-margin-bottom" style="padding: 20px;">
         <div class="w3-quarter col-sm-4">
-            <div class="w3-container w3-teal w3-padding-8 ">
-                <div class="w3-clear">
-                    <h3  class="text-center" style="font-size:20px">Files: <b>%s</b></h3>
-                </div>
-            </div>
+            <div class="w3-container w3-teal" style="text-align:center;">Files: <b>%s</b></div>
         </div>
         <div class="w3-quarter col-sm-4">
-            <div class="w3-container w3-red w3-padding-8 ">
-                <div class="w3-clear">
-                    <h3 class="text-center" style="font-size:20px">Errors: <b>%s</b></h3>
-                </div>
-            </div>
+            <div class="w3-container w3-red" style="text-align:center;">Errors: <b>%s</b></div>
         </div>
-
         <div class="w3-quarter col-sm-4">
-            <div class="w3-container w3-brown w3-padding-8">
-                <div class="w3-clear">
-                    <h3 class="text-center" style="font-size:20px">Warnings: <b>%s</b></h3>
-                </div>
-            </div>
+            <div class="w3-container w3-brown" style="text-align:center;">Warnings: <b>%s</b></div>
         </div>
         </div>
         <div class="tabcontent" id="analysis" >
