@@ -35,11 +35,11 @@ Creates HTML Report based on rflint output
 
  __WITHOUT ERRORS__
 
-![Screenshot](Image_Lint_With_Errors_Analysis.JPG)
+![Screenshot](Image_Lint_Without_Errors.JPG)
 
 __WITH ERRORS__
 
- ![Screenshot](Image_Lint_With_Errors.JPG)
+ ![Screenshot](Image_Lint_With_Errors_Analysis.JPG)
 
 ---
 
